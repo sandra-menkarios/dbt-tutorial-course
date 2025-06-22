@@ -1,0 +1,30 @@
+version: 2
+
+seeds:
+  - name: seed_distribution_centers_new
+    description: "Distribution centers not loaded to DWH"
+    tests:
+      - dbt_expectations.expect_table_row_count_to_equal:
+          value: 2
+
+    columns:
+      - name: id
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
+
+      - name: name
+        description: "Distribution center name"
+
+      - name: longitude
+
+      - name: latitude
+
+    config:
+      column_types:
+        id: INTEGER
+        name: STRING
+        longitude: FLOAT
+        latitude: FLOAT
