@@ -27,10 +27,6 @@ models:
         data_type: string
         description: ""
 
-      - name: brand
-        data_type: string
-        description: ""
-
       - name: retail_price
         data_type: float64
         description: ""
@@ -59,3 +55,23 @@ models:
       - name: distribution_center_id
         data_type: int64
         description: ""
+
+      - name: brand
+        data_type: string
+        description: ""
+
+    latest_version: 1
+    versions:
+      - v: 1
+        columns:
+          - include: all
+            exclude: [brand]
+
+      - v: 2
+        columns:
+          - include: all
+        config:
+          alias: stg_ecommerce__products
+
+
+

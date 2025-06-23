@@ -3,16 +3,23 @@ version: 2
 models:
   - name: stg_ecommerce__order_items
     description: ""
+    config:
+          contract:
+            enforced: true
     columns:
       - name: order_item_id
         data_type: int64
+        constraints:
+          - type: not_null
         description: ""
         tests:
-          - not_null
-          - unique
+          - primary_key:
+              severity: error
 
       - name: order_id
         data_type: int64
+        constraints:
+          - type: not_null
         description: ""
         tests:
           - not_null
@@ -22,6 +29,8 @@ models:
 
       - name: user_id
         data_type: int64
+        constraints:
+          - type: not_null
         description: ""
         tests:
           - not_null
@@ -29,6 +38,8 @@ models:
       - name: product_id
         data_type: int64
         description: ""
+        constraints:
+          - type: not_null
         tests:
           - not_null
           - relationships:

@@ -17,7 +17,8 @@ models:
         tests:
           - not_null
 
-      - name: user_id
+      - &user_id
+        name: user_id
         data_type: int64
         description: ""
         tests:
@@ -68,3 +69,8 @@ models:
           - not_null
           - dbt_utils.expression_is_true:
               expression: "= (product_retail_price - item_sale_price)"
+
+  - name: int_ecommerce__first_order_created
+    description: ""
+    columns:
+      - *user_id

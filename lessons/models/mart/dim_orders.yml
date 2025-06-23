@@ -1,8 +1,18 @@
 version: 2
 
+groups:
+  - name: sales
+    owner:
+      email: ss@my-company.com
+
+
+
 models:
   - name: dim_orders
     description: "Table of order level information"
+    config:
+      group: sales
+    access: protected
     columns:
       - name: order_id
         tests:
@@ -59,3 +69,6 @@ models:
           - not_null
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
+
+      - name: days_since_first_order
+        description: ""
